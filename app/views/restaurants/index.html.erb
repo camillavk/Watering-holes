@@ -1,7 +1,9 @@
+<%= flash[:notice] ? flash[:notice] : "" %>
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
     <h2><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></h2>
     <h2><%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %></h2>
+    <h2><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></h2>
   <% end %>
 <% else %>
   No restaurants yet!

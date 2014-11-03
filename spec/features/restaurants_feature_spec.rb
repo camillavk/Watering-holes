@@ -1,5 +1,16 @@
 require 'rails_helper'
 
+describe 'creating restaurants' do
+  it 'prompts user to fill out a form, then displays the new restaurant' do
+    visit '/restaurants'
+    click_link 'Add a restaurant'
+    fill_in 'Name', with: 'KFC'
+    click_button 'Create Restaurant'
+    expect(page).to have_content 'KFC'
+    expect(current_path).to eq '/restaurants'
+  end
+end
+
 describe 'restaurants' do
   context 'no restaurants have been added' do
     it 'should display a prompt to add a restaurant' do
@@ -50,13 +61,15 @@ describe 'restaurants' do
   end
 end
 
-describe 'creating restaurants' do
-  it 'prompts user to fill out a form, then displays the new restaurant' do
+describe 'deleting restaurants' do
+  before do
+    Restaurant.create(name: 'KFC')
+  end
+
+  it 'removes a restaurant when a user clicks a delete link' do
     visit '/restaurants'
-    click_link 'Add a restaurant'
-    fill_in 'Name', with: 'KFC'
-    click_button 'Create Restaurant'
-    expect(page).to have_content 'KFC'
-    expect(current_path).to eq '/restaurants'
+    click_link 'Delete KFC'
+    expect(page).not_to have_content 'KFC'
+    expect(page).to have_content 'Restaurant deleted successfully'
   end
 end
