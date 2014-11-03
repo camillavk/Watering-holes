@@ -19,6 +19,8 @@ describe 'creating restaurants' do
       expect(page).not_to have_content 'k'
       expect(page).to have_content 'error'
     end
+
+  
   end
 end
 
