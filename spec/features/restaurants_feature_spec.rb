@@ -39,7 +39,6 @@ describe 'creating restaurants' do
       expect(page).to have_content 'error'
     end
 
-
   end
 end
 
@@ -79,38 +78,40 @@ describe 'restaurants' do
 
   context 'editing restaurants' do
     before do
-      Restaurant.create(name: 'KFC')
       visit '/'
       click_link 'Sign up'
       fill_in('Email', with: 'test@example.com')
       fill_in('Password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
       click_button 'Sign up'
+      User.first().restaurants.create(name: 'KFC')
+
     end
 
-    it 'lets a user edit a restaurant' do
-      visit '/restaurants'
+    it 'lets a user edit own restaurant' do
+      visit '/'
       click_link 'Edit KFC'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       click_button 'Update Restaurant'
       expect(page).to have_content 'Kentucky Fried Chicken'
-      expect(current_path).to eq '/restaurants'
+      expect(current_path).to eq '/'
     end
   end
 end
 
 describe 'deleting restaurants' do
   before do
-    Restaurant.create(name: 'KFC')
+    # Restaurant.create(name: 'KFC')
     visit '/'
     click_link 'Sign up'
     fill_in('Email', with: 'test@example.com')
     fill_in('Password', with: 'testtest')
     fill_in('Password confirmation', with: 'testtest')
     click_button 'Sign up'
+    User.first().restaurants.create(name: 'KFC')
   end
 
-  it 'removes a restaurant when a user clicks a delete link' do
+  it 'removes restaurant when the user clicks a delete link' do
     visit '/restaurants'
     click_link 'Delete KFC'
     expect(page).not_to have_content 'KFC'

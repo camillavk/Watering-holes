@@ -25,19 +25,25 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
+    redirect_to '/', notice: 'Not your restaurant' unless current_user.id == @restaurant.user_id
   end
 
   def update
     @restaurant = Restaurant.find(params[:id])
     @restaurant.update(params.require(:restaurant).permit(:name))
-    redirect_to '/restaurants'
+    redirect_to '/'
   end
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
-    flash[:notice] = 'Restaurant deleted successfully'
-    redirect_to '/restaurants'
+    if current_user.id == @restaurant.user_id
+      @restaurant.destroy
+      flash[:notice] = 'Restaurant deleted successfully'
+    else
+      flash[:notice] = 'Not your restaurant'
+    end
+    # redirect_to '/', notice: 'Not your restaurant' unless current_user.id == @restaurant.user_id
+    redirect_to '/'
   end
 
 end
