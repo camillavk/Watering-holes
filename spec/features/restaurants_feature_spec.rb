@@ -26,7 +26,7 @@ describe 'creating restaurants' do
     fill_in 'Name', with: 'KFC'
     click_button 'Create Restaurant'
     expect(page).to have_content 'KFC'
-    expect(current_path).to eq '/restaurants'
+    expect(current_path).to eq '/'
   end
 
   context 'an invalid restaurant' do
@@ -112,7 +112,7 @@ describe 'deleting restaurants' do
   end
 
   it 'removes restaurant when the user clicks a delete link' do
-    visit '/restaurants'
+    visit '/'
     click_link 'Delete KFC'
     expect(page).not_to have_content 'KFC'
     expect(page).to have_content 'Restaurant deleted successfully'
