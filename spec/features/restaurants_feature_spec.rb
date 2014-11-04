@@ -14,13 +14,13 @@ describe 'creating restaurants' do
     it 'does not let you submit a name that is too short' do
       visit '/restaurants'
       click_link 'Add a restaurant'
-      fill_in 'Name', with: 'k'
+      fill_in 'Name', with: 'z'
       click_button 'Create Restaurant'
-      expect(page).not_to have_content 'k'
+      expect(page).not_to have_content 'z'
       expect(page).to have_content 'error'
     end
 
-  
+
   end
 end
 
