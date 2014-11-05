@@ -17,7 +17,7 @@
           </li>
           <% end %>
         </ul>
-        <p>Average rating: <%= restaurant.average_rating.to_i %></p>
+        <p>Average rating: <%= star_rating(restaurant.average_rating) %></p>
       <% else %>
       <p>No reviews yet!</p>
     <% end %>
