@@ -85,4 +85,6 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_KEY']
     }
   }
+
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
 end
