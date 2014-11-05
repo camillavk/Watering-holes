@@ -10,14 +10,16 @@
       <ul>
         <% restaurant.reviews.each do |review| %>
           <li>
-            <%= review.thoughts %>, <strong><%= review.rating %></strong>
+            <%= review.thoughts %>, Average rating: <%= star_rating(restaurant.average_rating) %>
+            <span class='endorsements_count'><%= review.endorsements.count %></span> endorsements
+            <%= link_to "Endorse", review_endorsements_path(review), class: 'endorsements_link' %>
           </li>
           <li>
-            <%= link_to "Delete Review", restaurant_review_path(restaurant, review), method: :delete %>
+            <%= link_to "Delete Review", review_path(review), method: :delete %>
           </li>
           <% end %>
         </ul>
-        <p>Average rating: <%= star_rating(restaurant.average_rating) %></p>
+
       <% else %>
       <p>No reviews yet!</p>
     <% end %>

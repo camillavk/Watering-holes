@@ -13,12 +13,12 @@ class ReviewsController < ApplicationController
       @review.user = current_user
       if @review.save
         flash[:notice] = 'Restaurant reviewed successfully'
-        redirect_to '/'
+        # redirect_to '/'
       else @review.delete
         flash[:notice] = 'Error: You have already reviewed this restaurant'
-        redirect_to '/'
         # render 'new'
       end
+      redirect_to '/'
   end
 
   def destroy
