@@ -57,7 +57,7 @@ describe 'restaurants' do
     end
 
     it 'should display restaurants' do
-      visit '/restaurants'
+      visit '/'
       expect(page).to have_content 'KFC'
       expect(page).not_to have_content('No restaurants yet')
     end
@@ -69,7 +69,7 @@ describe 'restaurants' do
     end
 
     it 'lets a user view a restaurant' do
-      visit '/restaurants'
+      visit '/'
       click_link 'KFC'
       expect(page).to have_content 'KFC'
       expect(current_path).to eq "/restaurants/#{@kfc.id}"

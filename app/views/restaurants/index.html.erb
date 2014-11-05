@@ -1,4 +1,4 @@
-<%= flash[:notice] ? flash[:notice] : "" %>
+<!-- <%= flash[:notice] ? flash[:notice] : "" %> -->
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
     <p><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></p>
