@@ -1,2 +1,4 @@
 <p><%= @restaurant.name %></p>
 <p><%= @restaurant.description %></p>
+<p>Average rating: <%= @restaurant.average_rating %></p>
+<%= image_tag @restaurant.image.url(:medium) %>

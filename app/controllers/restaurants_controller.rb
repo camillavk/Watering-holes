@@ -11,7 +11,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(params.require(:restaurant).permit(:name))
+    @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :image))
     if @restaurant.save
       flash[:notice] = 'Restaurant created successfully'
       # redirect_to '/'
@@ -32,7 +32,7 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update(params.require(:restaurant).permit(:name))
+    @restaurant.update(params.require(:restaurant).permit(:name, :image))
     redirect_to '/'
   end
 
