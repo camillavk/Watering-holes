@@ -1,3 +1,14 @@
+<% if @review.errors.any? %>
+  <div id="errors" >
+    <h2> <%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved: </h2>
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for [@restaurant, @review] do |f| %>
   <%= f.label :thoughts %>
   <%= f.text_area :thoughts %>
