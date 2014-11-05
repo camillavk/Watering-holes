@@ -12,9 +12,12 @@ class ReviewsController < ApplicationController
     @review = @restaurant.reviews.new(params.require(:review).permit(:thoughts, :rating))
       @review.user = current_user
       if @review.save
+        flash[:notice] = 'Restaurant reviewed successfully'
         redirect_to '/'
-      else
-        render 'new'
+      else @review.delete
+        flash[:notice] = 'Error: You have already reviewed this restaurant'
+        redirect_to '/'
+        # render 'new'
       end
   end
 

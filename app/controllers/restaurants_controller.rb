@@ -13,10 +13,12 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(params.require(:restaurant).permit(:name))
     if @restaurant.save
-      redirect_to '/'
-    else
-      render 'new'
+      flash[:notice] = 'Restaurant created successfully'
+      # redirect_to '/'
+    else @restaurant.delete
+      flash[:notice] = 'Error: Name is too short'
     end
+      redirect_to '/'
   end
 
   def show

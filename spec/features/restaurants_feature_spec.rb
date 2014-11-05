@@ -36,7 +36,7 @@ describe 'creating restaurants' do
       fill_in 'Name', with: 'z'
       click_button 'Create Restaurant'
       expect(page).not_to have_content 'z'
-      expect(page).to have_content 'error'
+      expect(page).to have_content 'Error'
     end
 
   end
