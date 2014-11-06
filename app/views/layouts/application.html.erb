@@ -3,6 +3,7 @@
 <head>
   <meta charset='UTF-8'>
   <title>Watering Holes</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,13 +13,33 @@
   <p class='notice'><%= notice %></p>
   <p class='alert'><%= alert %></p>
 
-  <% if user_signed_in? %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-   <%= link_to "Sign in", new_user_session_path %>
-   <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-   <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
+<section id='header'>
+
+  <section id='icon'></section>
+
+  <section id='wordmark'>
+    <h1>Watering Holes</h1>
+  </section>
+
+  <section id='user-mgt'>
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+    <ul>
+      <li id='sign-in'>
+       <%= link_to "Sign in", new_user_session_path %>
+      </li>
+      <li id='facebook'>
+       <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+     </li>
+     <li id='sign-up'>
+       <%= link_to "Sign up", new_user_registration_path %>
+     </li>
+   </ul>
+      <% end %>
+  </section>
+
+</section>
 
 <%= yield %>
 

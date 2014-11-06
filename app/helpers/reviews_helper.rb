@@ -12,5 +12,9 @@ module ReviewsHelper
   end
   end
 
+  def delete_review(review)
+    link_to "Delete Review", review_path(review), method: :delete if can?(:destroy, review)
+  end
+
 
 end

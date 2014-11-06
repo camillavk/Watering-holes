@@ -6,7 +6,7 @@
 
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
-    <p><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></p>
+    <p><%= link_to "#{restaurant.name}", restaurant_path(restaurant), 'data-no-turbolink' => true %></p>
     <%= image_tag restaurant.image.url(:thumb) %>
     <p>Average rating: <%= star_rating(restaurant.average_rating) %>
       <%= add_review (restaurant) %></p>

@@ -13,3 +13,102 @@
  *= require_tree .
  *= require_self
  */
+
+/*GLOBAL FONT STYLES*/
+
+a {
+  text-decoration: none;
+}
+/*SET BOX SIZING*/
+
+* {
+  box-sizing: border-box;
+}
+
+/*HEADER*/
+
+#header {
+  background-color:Yellow;
+  width:100%;
+  height:100px;
+  font-family: 'Lato';
+  }
+
+  /*ICON*/
+
+#icon {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: black;
+}
+
+/*WORDMARK*/
+
+#wordmark h1 {
+  display: inline;
+  float: left;
+  /*font-family: 'Lato';*/
+  font-weight: 700;
+  font-size: 3em;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+/*USER-MGT*/
+
+#user-mgt {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: white;
+  text-align: right;
+  /*font-family: 'Lato';*/
+  font-size: 1em;
+}
+
+#sign-in  {
+  margin-top: 5px;
+  background-color: orange;
+  border: 1px solid red;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+}
+
+#facebook  {
+  margin-top: 5px;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.Layout11_1 {
+  width:50%;
+   background-color:Red;
+   height:400px;
+   float:left;
+  }
+
+.Layout11_2 {
+  width:50%;
+  background-color:Blue;
+  float:left;
+  height:400px;
+  }
+
+.Layout11_3 {
+  width:50%;
+  background-color:Green;
+  float:left;
+  height:400px;
+  }
+
+.Layout11_4 {
+  width:50%;
+  background-color:Orange;
+  float:left;
+  height:400px;
+  }
