@@ -10,6 +10,7 @@ $(document).ready(function() {
       // $(this).siblings('.endorsements_count').text(response.new_endorsement_count);
       endorsementCount.text(response.new_endorsement_count);
     });
+      $(this).hide();
   });
 
 });
