@@ -1,0 +1,15 @@
+#form {
+  margin-top: 40px;
+  margin-left: 40px;
+  font-family: 'Lato';
+}
+
+  #form h2 {
+    font-size: 2em;
+  }
+
+ .field {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }

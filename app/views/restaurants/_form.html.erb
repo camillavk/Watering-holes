@@ -1,6 +1,18 @@
-<%= form_for @restaurant, :html => { :multipart => true } do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.file_field :image %>
-  <%= f.submit %>
+<section id='form'>
+
+<%= form_for @restaurant, :html => { :class => 'pure-form pure-form-stacked', :multipart => true } do |f| %>
+  <div class='field'>
+    <%= f.label :name %>
+  </div>
+  <div class='field'>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field'>
+    <%= f.file_field :image %>
+  </div>
+  <div class='actions'>
+    <%= f.submit :class => 'pure-button pure-button-primary' %>
+  </div>
 <% end %>
+
+</section>

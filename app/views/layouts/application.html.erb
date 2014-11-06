@@ -3,6 +3,7 @@
 <head>
   <meta charset='UTF-8'>
   <title>Watering Holes</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,10 +16,14 @@
 
 <section id='header'>
 
-  <section id='icon'></section>
+  <section id='icon'>
+    <a href='/'>
+      <img src='images/thumbs/home.png' height='60px' width='60px'>
+    </a>
+  </section>
 
   <section id='wordmark'>
-    <h1>Watering Holes</h1>
+    <a href='/'>Watering Holes</a>
   </section>
 
   <section id='user-mgt'>

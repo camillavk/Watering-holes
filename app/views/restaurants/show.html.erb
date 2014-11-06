@@ -1,32 +1,38 @@
-<p><%= @restaurant.name %></p>
-<p><%= @restaurant.description %></p>
-<%= image_tag @restaurant.image.url(:medium) %>
+<section id='details'>
+  <section id='medium_image'>
+    <%= image_tag @restaurant.image.url(:medium) %>
+  </section>
 
-<h3>Reviews</h3>
-<% if @restaurant.reviews.any? %>
-  <ul>
-    <% @restaurant.reviews.each do |review| %>
-      <li>
-        <p>
-          <%= review.thoughts %>
-        </p>
-        Average rating: <%= star_rating(@restaurant.average_rating) %>
-        <span class='endorsements_count'><%= review.endorsements.count %></span> endorsements
-        <%= link_to "Endorse", review_endorsements_path(review), class: 'endorsements_link' %>
-      </li>
-      <li>
-        <%= delete_review(review) %>
-      </li>
-      <% end %>
-    </ul>
+  <section id='description'>
+    <p><%= @restaurant.name %></p>
+    <p><%= @restaurant.description %></p>
+  </section>
+  <section id='edit'>
+    <p><%= edit_link(@restaurant) %></p>
+    <p><%= delete_link(@restaurant) %></p>
+  </section>
+</section>
 
-  <% else %>
-  <p>No reviews yet!</p>
-<% end %>
-
+<section id='reviews'>
+  <h3>Reviews</h3>
+  <h4>Average rating: <%= star_rating(@restaurant.average_rating) %></h4>
+    <section class='each'>
+    <% if @restaurant.reviews.any? %>
+      <% @restaurant.reviews.each do |review| %>
+          <section id='thoughts'>
+            <%= review.thoughts %>
+          </section>
+          <section class='rating'>
+            <span class='endorsements_count'><%= review.endorsements.count %></span> endorsements
+            <%= link_to "Endorse", review_endorsements_path(review), class: 'endorsements_link' %>
+          </section>
+          <section id='delete'>
+            <%= delete_review(review) %>
+          </section>
+        <% end %>
+      </section>
+    <% else %>
+    <p>No reviews yet!</p>
+  <% end %>
 <p><%= add_review(@restaurant) %></p>
-
-
-
-<p><%= edit_link(@restaurant) %></p>
-<p><%= delete_link(@restaurant) %></p>
+</section>

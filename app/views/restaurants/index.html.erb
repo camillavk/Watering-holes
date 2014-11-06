@@ -1,16 +1,26 @@
-<% if user_signed_in? %>
+<section id='add_rest'>
+  <% if user_signed_in? %>
+    <a href='/restaurants/new'>[ Add a restaurant ]</a>
+  <% end %>
+</section>
 
-  <a href='/restaurants/new'>Add a restaurant</a>
-
-<% end %>
-
-<% if @restaurants.any? %>
-  <% @restaurants.each do |restaurant| %>
-    <p><%= link_to "#{restaurant.name}", restaurant_path(restaurant), 'data-no-turbolink' => true %></p>
-    <%= image_tag restaurant.image.url(:thumb) %>
-    <p>Average rating: <%= star_rating(restaurant.average_rating) %>
-      <%= add_review (restaurant) %></p>
+<section id='restaurant'>
+  <% if @restaurants.any? %>
+    <% @restaurants.each do |restaurant| %>
+      <section id='each'>
+        <section id='name'>
+          <p><%= link_to "#{restaurant.name}", restaurant_path(restaurant), 'data-no-turbolink' => true %></p>
+        </section>
+        <section id='image'>
+          <%= image_tag restaurant.image.url(:medium) %>
+        </section>
+        <section id='rating'>
+            <p>Average rating: <%= star_rating(restaurant.average_rating) %>
+            <%= add_review (restaurant) %></p>
+        </section>
+      </section>
     <% end %>
-<% else %>
-  No restaurants yet!
-<% end %>
+  <% else %>
+    <h2>No restaurants yet!</h2>
+  <% end %>
+</section>

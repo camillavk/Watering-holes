@@ -1,0 +1,100 @@
+/*GLOBAL FONT STYLES*/
+
+a {
+  text-decoration: none;
+}
+
+/*SET BOX SIZING*/
+
+* {
+  box-sizing: border-box;
+}
+
+/*DETAILS*/
+
+#details {
+  width:30%;
+  height:400px;
+  float:left;
+  font-family: 'Lato';
+  /*border-right: 2px dashed #45ADA8;*/
+  /*background-color: red;*/
+  }
+
+  #medium_image {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  #description {
+    margin-top: 10px;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  #edit {
+    padding: 10px;
+    margin-left: 10px;
+  }
+
+    a {
+      color: #447799;
+    }
+
+/*REVIEWS*/
+
+#reviews {
+  width:70%;
+  font-family: 'Lato';
+  float:left;
+  height:400px;
+  }
+
+  .each {
+    padding: 10px;
+    margin-top: 5px;
+  }
+
+  h3 {
+    font-size: 3em;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  h4 {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin-left: 10px;
+  }
+
+  #thoughts {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 1.5em;
+  }
+
+  .rating {
+    margin-left: 10px;
+    padding: 5px;
+  }
+
+  #delete {
+    margin-left: 10px;
+    padding: 5px;
+  }
+
+
+
+
+
+/*.Layout2_header {
+  background-color:Yellow;
+  width:100%;
+  height:100px;
+  }	*/
