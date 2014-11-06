@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :image))
+    @restaurant.user_id = current_user.id
     if @restaurant.save
       flash[:notice] = 'Restaurant created successfully'
       # redirect_to '/'
@@ -26,8 +27,10 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
-    redirect_to '/', notice: 'Not your restaurant' unless current_user.id == @restaurant.user_id
+    @restaurant = current_user.restaurants.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = 'Not your restaurant'
+    redirect_to '/'
   end
 
   def update
@@ -37,13 +40,10 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:id])
-    if current_user.id == @restaurant.user_id
+    @restaurant = current_user.restaurants.find(params[:id])
+    # if current_user.id == @restaurant.user_id
       @restaurant.destroy
       flash[:notice] = 'Restaurant deleted successfully'
-    else
-      flash[:notice] = 'Not your restaurant'
-    end
     # redirect_to '/', notice: 'Not your restaurant' unless current_user.id == @restaurant.user_id
     redirect_to '/'
   end

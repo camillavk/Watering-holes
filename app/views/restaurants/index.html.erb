@@ -1,34 +1,16 @@
-<!-- <%= flash[:notice] ? flash[:notice] : "" %> -->
+<% if user_signed_in? %>
+
+  <a href='/restaurants/new'>Add a restaurant</a>
+
+<% end %>
+
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
     <p><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></p>
     <%= image_tag restaurant.image.url(:thumb) %>
-    <p><%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %></p>
-    <p><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
-
-    <h3>Reviews</h3>
-    <% if restaurant.reviews.any? %>
-      <ul>
-        <% restaurant.reviews.each do |review| %>
-          <li>
-            <%= review.thoughts %>, Average rating: <%= star_rating(restaurant.average_rating) %>
-            <span class='endorsements_count'><%= review.endorsements.count %></span> endorsements
-            <%= link_to "Endorse", review_endorsements_path(review), class: 'endorsements_link' %>
-          </li>
-          <li>
-            <%= link_to "Delete Review", review_path(review), method: :delete %>
-          </li>
-          <% end %>
-        </ul>
-
-      <% else %>
-      <p>No reviews yet!</p>
+    <p>Average rating: <%= star_rating(restaurant.average_rating) %>
+      <%= add_review (restaurant) %></p>
     <% end %>
-    <p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></p>
-
-  <% end %>
 <% else %>
   No restaurants yet!
 <% end %>
-
-<a href='/restaurants/new'>Add a restaurant</a>

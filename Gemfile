@@ -33,6 +33,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'cancan'
 
 # Use unicorn as the app server
 # gem 'unicorn'

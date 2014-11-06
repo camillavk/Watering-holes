@@ -16,4 +16,11 @@ class Restaurant < ActiveRecord::Base
     reviews.inject(0) {|memo, review| memo + review.rating} / reviews.count
   end
 
+  def not_reviewed_by?(current_user)
+    reviews.each do |review|
+      return false if review.user == current_user
+    end
+      true
+  end
+
 end

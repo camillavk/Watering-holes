@@ -1,4 +1,29 @@
 <p><%= @restaurant.name %></p>
 <p><%= @restaurant.description %></p>
-<p>Average rating: <%= @restaurant.average_rating %></p>
 <%= image_tag @restaurant.image.url(:medium) %>
+
+<h3>Reviews</h3>
+<% if @restaurant.reviews.any? %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <%= review.thoughts %>, Average rating: <%= star_rating(@restaurant.average_rating) %>
+        <span class='endorsements_count'><%= review.endorsements.count %></span> endorsements
+        <%= link_to "Endorse", review_endorsements_path(review), class: 'endorsements_link' %>
+      </li>
+      <li>
+        <%= link_to "Delete Review", review_path(review), method: :delete %>
+      </li>
+      <% end %>
+    </ul>
+
+  <% else %>
+  <p>No reviews yet!</p>
+<% end %>
+
+<p><%= add_review(@restaurant) %></p>
+
+
+
+<p><%= edit_link(@restaurant) %></p>
+<p><%= delete_link(@restaurant) %></p>

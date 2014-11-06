@@ -2,7 +2,7 @@ require 'rails_helper'
 
 def leave_review(thoughts, rating)
   visit '/'
-  click_link 'Review KFC'
+  click_link 'Review'
   fill_in 'Thoughts', with: thoughts
   select rating, from: 'Rating'
   click_button 'Leave Review'
@@ -24,13 +24,13 @@ describe 'reviewing' do
   end
 
   it 'allows users to leave a review using a form' do
-    leave_review('so so', '3')
-    expect(current_path).to eq '/'
-    expect(page).to have_content 'so so'
+    leave_review('so so', '4')
+    expect(page).to have_content '★★★★☆'
   end
 
   it 'allows user to delete their own review' do
     leave_review('so so', '3')
+    click_link 'KFC'
     click_link 'Delete Review'
     expect(page).to have_content 'Review deleted successfully'
   end

@@ -4,8 +4,7 @@ describe 'creating restaurants' do
 
   it 'requires the user to be sign in first' do
     visit '/'
-    click_link 'Add a restaurant'
-    expect(page).to have_content 'You need to sign in'
+    expect(page).not_to have_content 'Add a restaurant'
   end
 
 end
@@ -45,8 +44,13 @@ end
 describe 'restaurants' do
   context 'no restaurants have been added' do
     it 'should display a prompt to add a restaurant' do
-      visit '/restaurants'
+      visit '/'
       expect(page).to have_content 'No restaurants'
+      click_link 'Sign up'
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button 'Sign up'
       expect(page).to have_link 'Add a restaurant'
     end
   end
@@ -90,6 +94,7 @@ describe 'restaurants' do
 
     it 'lets a user edit own restaurant' do
       visit '/'
+      click_link 'KFC'
       click_link 'Edit KFC'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       click_button 'Update Restaurant'
@@ -113,6 +118,7 @@ describe 'deleting restaurants' do
 
   it 'removes restaurant when the user clicks a delete link' do
     visit '/'
+    click_link 'KFC'
     click_link 'Delete KFC'
     expect(page).not_to have_content 'KFC'
     expect(page).to have_content 'Restaurant deleted successfully'
